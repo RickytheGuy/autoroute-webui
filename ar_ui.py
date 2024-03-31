@@ -5,8 +5,9 @@ Louis "Ricky" Rosas
 BYU HydroInformatics Lab
 """
 import gradio as gr
-import helper_funcs as hp
 import signal
+
+import helper_funcs as hp
 
 with gr.Blocks(title='AutoRoute WebUI') as demo:
     gr.Markdown('## AutoRoute WebUI')

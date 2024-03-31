@@ -1,6 +1,6 @@
 import gradio as gr
 import os
-from typing import Tuple
+from typing import Tuple, Dict, List
 import pandas as pd
 import geopandas as gpd
 import json
@@ -17,7 +17,7 @@ SYSTEM = platform.system()
 
 with open('defaults_and_docs.json', 'r', encoding='utf-8') as f:
     d = json.loads(f.read())[0]
-    docs: dict[str:str] = d['docs']
+    docs: Dict[str:str] = d['docs']
 
 def _format_files(file_path: str) -> str:
     """
@@ -38,7 +38,7 @@ def _warn_DNE( card: str, value: str) -> None:
         if not os.path.exists(value):
             gr.Warning(f"The file {value} for {card} does not exist: ")
 
-def _check_type( card: str, value: str, types: list[str]) -> None:
+def _check_type( card: str, value: str, types: List[str]) -> None:
     if not any(value.endswith(t) for t in types):
         gr.Warning(f"{card} is {os.path.basename(value)}, which does not have a valid file type ({','.join(types)})")
 
